@@ -9,7 +9,7 @@ cwd => "/var/",
 creates => "/tmp/file2",
 require =>Exec['mysqladmin -u root password abcd1234 && touch /tmp/file1']
 }
-exec{"mysql -u root -p abcd1234 < /var/mysqlcommands && touch /tmp/file3":
+exec{"mysql -u root -pabcd1234 < /var/mysqlcommands && touch /tmp/file3":
 path => "/usr/bin/",
 creates => "/tmp/file3",
 require =>Exec['wget https://raw.githubusercontent.com/roybhaskar9/chefwordpress-1/master/wordpress/files/default/mysqlcommands && touch /tmp/file2']
@@ -19,7 +19,7 @@ exec{"wget https://raw.githubusercontent.com/roybhaskar9/chefwordpress-1/master/
 cwd => "/var/www/html",
 path => "/usr/bin/",
 creates => "/tmp/file4",
-require=>Exec['mysql -u root -p abcd1234 < /var/mysqlcommands && touch /tmp/file3']
+require=>Exec['mysql -u root -pabcd1234 < /var/mysqlcommands && touch /tmp/file3']
 }
 
 }
